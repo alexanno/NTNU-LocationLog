@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>index</title>
+	<meta name="author" content="Alexander" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="locationlog.js"></script>
+	<style>
+		pre
+		{
+		    -moz-tab-size: 8;
+		    -o-tab-size:   8;
+
+		}
+	</style>
+</head>
+<body>
+	<label for="logid">Point ID:</label>
+	<input id="logid" type="text" value=""/>
+<br>
+	<label for="logdesc">Description:</label>
+	<input id="logdesc" type="text" size="150" value="30 sek, med FP, med nye koordinater"/>
+<br>
+	<label for="interval">Interval (ms):</label>
+	<input id="interval" type="text" value="30000"/>
+<br>
+	<label for="usegeoloc">Use GeoLocation?</label>
+	<input id="usegeoloc" type="checkbox"/>
+<br>
+	<label for="usemacswitch">Use MAC change?</label>
+	<input id="usemacswitch" type="checkbox" disabled="true" value="false"/>
+<br>	
+	<label for="identifier">IP/MAC:</label>
+	<input id="identifier" type="text" value=""/>
+
+	<label><input name="type" id="type" type="radio" checked="checked" value="IPv4"/>IPv4</label>
+	<label><input name="type" id="type" type="radio" value="MAC"/>MAC</label>
+<br>	
+	<input id="start" type="button" value="Start!"/>
+<!--
+<div style="float: right;">
+	<img id="map" src=""/>
+</div>
+-->
+<pre id="notifications"></pre>
+</body>
+</html>
+

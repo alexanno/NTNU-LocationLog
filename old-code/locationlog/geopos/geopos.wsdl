@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice.gpos.geofinder" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice.gpos.geofinder" xmlns:intf="http://webservice.gpos.geofinder" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:message name="getLocationRequest">
+    <wsdl:part name="in0" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getLocationForRequest">
+    <wsdl:part name="in0" type="xsd:string"/>
+    <wsdl:part name="in1" type="xsd:string"/>
+    <wsdl:part name="in2" type="xsd:string"/>
+    <wsdl:part name="in3" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getLocationResponse">
+    <wsdl:part name="getLocationReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getLocationForResponse">
+    <wsdl:part name="getLocationForReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:portType name="RequestEndpoint">
+    <wsdl:operation name="getLocationFor" parameterOrder="in0 in1 in2 in3">
+      <wsdl:input message="impl:getLocationForRequest" name="getLocationForRequest"/>
+      <wsdl:output message="impl:getLocationForResponse" name="getLocationForResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getLocation" parameterOrder="in0">
+      <wsdl:input message="impl:getLocationRequest" name="getLocationRequest"/>
+      <wsdl:output message="impl:getLocationResponse" name="getLocationResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RequestEndpointSoapBinding" type="impl:RequestEndpoint">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getLocationFor">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getLocationForRequest">
+        <wsdlsoap:body namespace="http://webservice.gpos.geofinder" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLocationForResponse">
+        <wsdlsoap:body namespace="http://webservice.gpos.geofinder" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLocation">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getLocationRequest">
+        <wsdlsoap:body namespace="http://webservice.gpos.geofinder" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLocationResponse">
+        <wsdlsoap:body namespace="http://webservice.gpos.geofinder" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GposRequest">
+    <wsdl:port binding="impl:RequestEndpointSoapBinding" name="RequestEndpoint">
+      <wsdlsoap:address location="http://geoposen.item.ntnu.no:8443/geofinder/ws/geofinder/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

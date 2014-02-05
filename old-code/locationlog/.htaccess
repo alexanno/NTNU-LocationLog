@@ -1,0 +1,5 @@
+AuthName "Locationlog"
+AuthType Basic
+AuthUserFile /home/alexanno/public_html/dev/.htpasswd
+AuthGroupFile /dev/null
+require valid-user 
